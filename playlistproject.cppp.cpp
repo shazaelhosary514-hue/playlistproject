@@ -62,6 +62,7 @@ public:
             cout << "Song is Added\n";
         }
     }
+
     // remove song
     void removesong(string name)
     {
@@ -132,6 +133,19 @@ public:
             count++;
             temp = temp->next;
         }
+    }
+
+    // Bonus: count songs in playlist
+    void CountSongs()
+    {
+        int count = 0;
+        Node *temp = head;
+        while (temp != nullptr)
+        {
+            count++;
+            temp = temp->next;
+        }
+        cout << "Total songs in playlist: " << count << endl;
     }
 
     // Repeat song
@@ -210,9 +224,10 @@ int main()
         cout << "1. Add Song\n";
         cout << "2. Remove Song\n";
         cout << "3. Show Playlist\n";
-        cout << "4. Play Repeat\n";
-        cout << "5. Shuffle Play\n";
-        cout << "6. Exit\n";
+        cout << "4. Count Songs\n";
+        cout << "5. Play Repeat\n";
+        cout << "6. Shuffle Play\n";
+        cout << "7. Exit\n";
         cout << "Enter choice: ";
         cin >> choice;
         cin.ignore(); // 3shan nms7 el newline character b3d cin >> choice
@@ -233,22 +248,25 @@ int main()
             myPlaylist.Showplaylist();
             break;
         case 4:
+            myPlaylist.CountSongs();
+            break;
+        case 5:
             cout << "Enter song name: ";
             getline(cin, songName);
             cout << "Enter number of repeats: ";
             cin >> times;
             myPlaylist.Playrepeat(songName, times);
             break;
-        case 5:
+        case 6:
             myPlaylist.Shuffle();
             break;
-        case 6:
+        case 7:
             cout << "Exiting program...\n";
             break;
         default:
             cout << "Invalid choice!\n";
         }
-    } while (choice != 6);
+    } while (choice != 7);
 
     return 0;
 }
